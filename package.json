@@ -1,0 +1,50 @@
+{
+  "name": "session-secure",
+  "version": "1.0.0",
+  "private": true,
+  "description": "框架无关的会话安全中间件（Express / Hono），含可插拔存储与攻防对照演示",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./express": {
+      "types": "./dist/adapters/express.d.ts",
+      "import": "./dist/adapters/express.js"
+    },
+    "./hono": {
+      "types": "./dist/adapters/hono.d.ts",
+      "import": "./dist/adapters/hono.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo:vuln": "tsx demo/vulnerable/server.ts",
+    "demo:secure": "tsx demo/secure/server.ts",
+    "attack": "tsx tests/attack/cli.ts",
+    "typecheck": "tsc -p tsconfig.typecheck.json"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.8",
+    "express": "^4.21.2",
+    "hono": "^4.6.14",
+    "ioredis": "^5.4.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.2",
+    "@types/supertest": "^6.0.2",
+    "supertest": "^7.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.0.0"
+  }
+}
