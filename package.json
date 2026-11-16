@@ -1,0 +1,42 @@
+{
+  "name": "session-guard",
+  "version": "1.0.0",
+  "description": "框架无关的会话安全中间件（Express / Hono），防会话固定、CSRF，支持并发会话限制与踢下线、可插拔存储",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": ["dist/src"],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "pretest": "tsc",
+    "test": "node --test dist/tests/",
+    "attack": "tsc && node dist/scripts/attack.js",
+    "demo:vuln": "node dist/examples/vulnerable-app/server.js",
+    "demo:express": "node dist/examples/secure-express/server.js",
+    "demo:hono": "node dist/examples/secure-hono/server.js",
+    "demo:redis": "node dist/examples/secure-express-redis/server.js"
+  },
+  "peerDependencies": {
+    "express": ">=4",
+    "hono": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "express": { "optional": true },
+    "hono": { "optional": true }
+  },
+  "devDependencies": {
+    "@hono/node-server": "^1.13.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "express": "^5.1.0",
+    "hono": "^4.6.0",
+    "typescript": "^5.7.0"
+  }
+}
